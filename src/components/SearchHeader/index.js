@@ -7,9 +7,11 @@ import './styles.css'
 function SearchHeader(props) {
 	const [searchString, setSearchString] = React.useState();
 
+	const handleOnInputChange = (e) => setSearchString(e.target.value);
+
 	return <div className="searchHeader">
-		<SearchInput text={searchString} onChange={(e) => setSearchString(e.target.value)}  />
-		<ActionButton emoji="❌" onClick={() => setSearchString("")} />
+		<SearchInput text={searchString} onChange={handleOnInputChange}  />
+		<ActionButton emoji="❌" onClick={() => setSearchString("")} disabled={!searchString} />
 		<ActionButton emoji="😺" onClick={() => setSearchString("cat")}/>
 		<ActionButton emoji="🚗" onClick={() => setSearchString("car")} />
 		<ActionButton emoji="🥗" onClick={() => setSearchString("food")} />
